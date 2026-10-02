@@ -1,0 +1,22 @@
+{% extends 'base-crud.html' %}
+
+{% block title %}Novo Paciente{% endblock %}
+
+{% block content %}
+
+<h2>Novo Paciente</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="nome" placeholder="Nome do paciente">
+
+    <input type="text" name="cpf" placeholder="CPF">
+
+    <input type="date" name="data_nascimento">
+
+    <button type="submit">Cadastrar</button>
+</form>
+
+{% endblock %}
+
