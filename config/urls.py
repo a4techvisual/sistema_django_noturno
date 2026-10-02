@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.crud.urls')),
     path('login/', include('apps.login.urls')),
-    path('logout/', login_views.logout, name ='logout'),
+    path('logout/', login_views.logout, name='logout'),
 ]

@@ -5,9 +5,10 @@ from django.contrib.auth.models import User
 # Create your views here.
 def login(request):
     if request.method == "POST":
-        username = request.POST.get('username', '').strip()
+        username = request.POST.get('username','').strip()
         password = request.POST.get('password','')
         user = authenticate(request,username=username,password=password)
+
         if user is not None:
             auth_login(request, user)
             return redirect('index')
@@ -29,7 +30,7 @@ def novo_usuario(request):
             })
 
         if User.objects.filter(username=username).exists():
-            return render( request, 'novo-usuario.html',{
+            return render(request, 'novo-usuario.html',{
                 'error': "Este usuário já está cadastrado."
             })
 
