@@ -1,9 +1,10 @@
 {% extends 'base-crud.html' %}
 {% block title %}Novo Paciente{% endblock %}
+{% load static %}
 {% block content %}
     <h1 class="mt-5">
         Cadastrar Novo Paciente
-    </h1>
+    </h1> 
     <hr>
     {% if error %}<p>{{ error }}</p>{% endif %}
     <form action="" method="POST">
@@ -34,4 +35,5 @@
             </div>
         </div>
     </form>
+    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
