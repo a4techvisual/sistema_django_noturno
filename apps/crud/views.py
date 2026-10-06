@@ -5,7 +5,8 @@ from .models import Paciente
 # Create your views here.
 @login_required
 def index(request):
-    return render(request, "index.html")
+    pacientes = Paciente.objects.all()
+    return render(request, "index.html", {'pacientes': pacientes})
 
 @login_required
 def novo_paciente(request):
