@@ -2,24 +2,25 @@
 {% block title %}CRUD | Home Page{% endblock %}
 {% block content %}
     <div class="row mt-5">
-        <h1>Olá, {{ user.username }}!</h1>
+        <h1>Olá, {{ user.username }}, seja bem-vindo!</h1>
     </div>
     <hr>
     <div class="row mt-5">
-        <h2>Lista de Pacientes</h2>
+        <h2>Lista de pacientes</h2>
         <ul>
             {% for paciente in pacientes %}
                 <li>
-                    {{ paciente.codigo_paciente }} 
-                    {{ paciente.nome }}
-                    {{ paciente.cpf}}
-                    {{ paciente.email}}
-                    {{ paciente.telefone}}
-                    {{paciente.data_nascimento | date:"d/m/Y"}}
-                    <a href ="{% url 'editar_paciente' paciente.id %}">Editar</a>
+                    {{ paciente.codigo_paciente }} |
+                    {{ paciente.nome }} |
+                    {{ paciente.cpf }} |
+                    {{ paciente.email }} |
+                    {{ paciente.telefone }} |
+                    {{ paciente.data_nascimento|date:"d/m/Y" }} |
+                    <a href="{% url 'alterar_paciente' paciente.codigo_paciente %}">Alterar</a>
                 </li>
             {% empty %}
-                <li>Nenhum paciente encontrado.</li>
+                <li>Nenhum paciente cadastrado.</li>
             {% endfor %}
         </ul>
+    </div>
 {% endblock %}
