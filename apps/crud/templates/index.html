@@ -15,7 +15,8 @@
                     {{ paciente.cpf}}
                     {{ paciente.email}}
                     {{ paciente.telefone}}
-                    {{paciente.data_nascimento}}
+                    {{paciente.data_nascimento | date:"d/m/Y"}}
+                    <a href ="{% url 'editar_paciente' paciente.id %}">Editar</a>
                 </li>
             {% empty %}
                 <li>Nenhum paciente encontrado.</li>
