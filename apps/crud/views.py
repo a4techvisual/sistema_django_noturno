@@ -8,6 +8,7 @@ def index(request):
     pacientes = Paciente.objects.all()
     return render(request, "index.html", {'pacientes':pacientes})
 
+
 @login_required
 def novo_paciente(request):
     if request.method == 'POST':
@@ -26,9 +27,11 @@ def novo_paciente(request):
         return redirect('novo_paciente_sucesso')
     return render(request, "novo-paciente.html")
 
+
 @login_required
 def novo_paciente_sucesso(request):
     return render(request, "novo-paciente-sucesso.html")
+
 
 @login_required
 def alterar_paciente(request,codigo_paciente):
@@ -44,3 +47,19 @@ def alterar_paciente(request,codigo_paciente):
 
         return redirect('index')
     return render(request, "alterar_dados.html", {'paciente':paciente})
+
+
+@login_required
+def excluir_paciente(request, codigo_paciente):
+    paciente = Paciente.objects.get(codigo_paciente=codigo_paciente)
+    paciente.delete()
+    return redirect('index')
+
+
+def buscar_paciente(request):
+    query = request.GET.get('buscar','')
+    pacientes = Paciente.objects.filter(nome__icontains=query)
+    return render(request, 'index.html', {
+        'pacientes':pacientes,
+        'query':query
+    })
