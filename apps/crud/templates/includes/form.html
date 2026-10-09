@@ -1,5 +1,5 @@
 <div class="row mt-5">
-    <div class="col-12 col-lg-4 mb-3">
+        <div class="col-12 col-lg-4 mb-3"> 
         <label for="{{ form.nome.id_for_label }}"
         class="form-label">Nome</label>
         {{ form.nome}}
@@ -26,5 +26,17 @@
         {{ form.cpf}}
         {% for error in form.cpf.errors %}
             <small>{{ error }}</small>
+        {% endfor %}            
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 mb-3">
+        <label for="{{ form.data_nascimento.id_for_label }}"
+        class="form-label">Data de Nascimento</label>
+        {{ form.data_nascimento}}
+        {% for error in form.data_nascimento.errors %}
+            <small>{{ error }}</small>
         {% endfor %}
     </div>
+    <div class="col-12 col-12 mb-3">
+        <label for="{{ form.sintomas.id_for_label }}"
+        class="form-label">Sintomas</label>
+        {{ form.sintomas}}
