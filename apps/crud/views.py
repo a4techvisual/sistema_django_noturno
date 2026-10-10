@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Paciente
 from .forms import PacienteForm
 
@@ -29,7 +29,7 @@ def novo_paciente_sucesso(request):
 
 @login_required
 def alterar_paciente(request,codigo_paciente):
-    paciente = Paciente.objects.get(codigo_paciente=codigo_paciente)
+    paciente = get_object_or_404(Paciente, codigo_paciente=codigo_paciente)
     if request.method == 'POST':
         form = PacienteForm(request.POST, instance=paciente)
         if form.is_valid():
@@ -37,15 +37,16 @@ def alterar_paciente(request,codigo_paciente):
             return redirect('index')
     else:
         form = PacienteForm(instance=paciente)
-    return render(request, "alterar-paciente.html", {'form': form, 'paciente': paciente})
+    return render(request, "alterar_dados.html", {'form': form, 'paciente': paciente})
 
 @login_required
 def excluir_paciente(request, codigo_paciente):
-    paciente = Paciente.objects.get(codigo_paciente=codigo_paciente)
+    paciente = get_object_or_404(Paciente, codigo_paciente=codigo_paciente)
     paciente.delete()
     return redirect('index')
 
 
+@login_required
 def buscar_paciente(request):
     query = request.GET.get('buscar','')
     pacientes = Paciente.objects.filter(nome__icontains=query)

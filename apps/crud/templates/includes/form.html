@@ -3,13 +3,14 @@
         <label for="{{ form.nome.id_for_label }}"
         class="form-label">Nome</label>
         {{ form.nome}}
+        {% for error in form.nome.errors %}<small class="text-danger">{{ error }}</small>{% endfor %}
     </div>
     <div class="col-12 col-md-6 col-lg-4 mb-3">
         <label for="{{ form.email.id_for_label }}"
         class="form-label">Email</label>
         {{ form.email}}
         {% for error in form.email.errors %}
-            <small>{{ error }}</small>
+            <div class="form-text">{{ error }}</div>
         {% endfor %}
     </div>
     <div class="col-12 col-lg-4 mb-3">
@@ -40,3 +41,5 @@
         <label for="{{ form.sintomas.id_for_label }}"
         class="form-label">Sintomas</label>
         {{ form.sintomas}}
+        {% for error in form.sintomas.errors %}<small class="text-danger">{{ error }}</small>{% endfor %}
+    </div>

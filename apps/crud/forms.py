@@ -12,7 +12,7 @@ class PacienteForm(forms.ModelForm):
             'email':forms.EmailInput(attrs={'class':"form-control",'id':'email', 'required': True}),
             'telefone':forms.TextInput(attrs={'class':"form-control",'id':'telefone', 'required': True}),
             'data_nascimento':forms.DateInput(attrs={'class':"form-control",'id':'data_nascimento', 'type': 'date', 'required': True}),
-            'sintomas':forms.Textarea(attrs={'class':"form-control",'id':'sintomas', 'required': True}),
+            'sintomas':forms.Textarea(attrs={'class':"form-control",'id':'sintomas', 'rows': 3}),
         }
         error_messages = {
             'nome': {
